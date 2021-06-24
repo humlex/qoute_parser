@@ -3,10 +3,10 @@ const QuoteRouter = require("../controllers/QuoteController.js");
 
 const router = new Router();
 
-router.get("/quotes");
-router.get("/quotes/:id");
-router.post("/quotes", QuoteRouter.create);
-router.put("/quotes");
-router.delete("/quotes:/id", QuoteRouter.delete);
+router.get("/quotes", QuoteRouter.getAllQuotes);
+router.get("/quotes/:id", QuoteRouter.findOneQuote);
+router.post("/quotes", QuoteRouter.createQuote);
+router.put("/quotes/:id", QuoteRouter.updateQuote);
+router.delete("/quotes/:id", QuoteRouter.deleteOne);
 
 module.exports = router;
