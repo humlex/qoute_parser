@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const dotenv = require("dotenv");
 
+const router = require("./routes/QuoteRouter.js");
+
 dotenv.config();
 
 const PORT = process.env.PORT || 3000;
@@ -12,6 +14,7 @@ const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
+app.use("/api", router);
 
 mongoose
   .connect(process.env.MONGODB_URL, {
@@ -26,6 +29,6 @@ mongoose
     process.exit();
   });
 
-app.get("/", (req, res) => res.send("Hello"));
+app.get("/", (req, res) => res.send("main api page"));
 
 app.listen(PORT, () => console.log("Server is running on port " + PORT));
